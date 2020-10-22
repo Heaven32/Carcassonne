@@ -1,0 +1,42 @@
+/* .box {
+    height: 62px;
+    width: 62px;
+    border: 1px solid black;
+}
+.game-board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 515px;
+    margin: 0 auto;
+}
+.box-card {
+    width: fit-content;
+    text-align: center;
+    margin: 20px;
+    display: inline-block
+}
+.card {
+    border: 2px solid white;
+    width: fit-content;
+    box-shadow: 0.4em -0.4em 5px rgba(122,122,122,0.5);
+    margin: 0 auto;
+} */
+
+.main {
+    width: 200px;
+    height: 100px;
+    background-color: burlywood;
+}
+.border {
+    border: 2px solid red;
+}
+.bar {
+    width: 200px;
+    height: 100px;
+    background-color: darkgrey;
+}
+.item {
+    width: 200px;
+    height: 100px;
+    background-color: cornflowerblue;
+}
