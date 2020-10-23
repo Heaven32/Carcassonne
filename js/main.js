@@ -51,31 +51,19 @@ cardEl.innerHTML = arrCard[0].adress;
 let angle = 0;
 // Клик по игровому полю
 const boxAll = document.querySelectorAll('.box');
-// function clickBoardGame () {
-//     console.dir(i)
-//     if (this.textContent === ' '){
-//         this.innerHTML = arrCard[0].adress;
-//         arrCard.shift()
-//     }else {
-//         angle += 90;
-//         this.style.transform = `rotate(${angle}deg)`
-//     }
-//     balanceCards.innerHTML = `Осталось ${arrCard.length} карт`
-//     cardEl.innerHTML = arrCard[0].adress;
-// };
+function clickBoardGame () {
+    if (this.textContent === ' '){
+        this.innerHTML = arrCard[0].adress;
+        arrCard.shift()
+    }else {
+        angle += 90;
+        this.style.transform = `rotate(${angle}deg)`
+    }
+    balanceCards.innerHTML = `Осталось ${arrCard.length} карт`
+    cardEl.innerHTML = arrCard[0].adress;
+};
 
 const addListeners = () => {
-    boxAll.forEach((elem, i) => elem.addEventListener('click', (g) => {
-        console.log(g)
-        // if (i.textContent === ' '){
-        //     i.innerHTML = arrCard[0].adress;
-        //     arrCard.shift()
-        // }else {
-        //     angle += 90;
-        //     i.style.transform = `rotate(${angle}deg)`
-        // }
-        // balanceCards.innerHTML = `Осталось ${arrCard.length} карт`
-        // cardEl.innerHTML = arrCard[0].adress;
-    })) 
-};
+    boxAll.forEach((elem) => elem.addEventListener('click', clickBoardGame) 
+)};
 addListeners();
