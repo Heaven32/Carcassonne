@@ -1,69 +1,31 @@
-const cardEl = document.querySelector('.card');
-const balanceCards =document.querySelector('.balance_cards');
-const gameBoard = document.querySelector('.game-board');
+$(document).on('click', '.dropdown-menu', e => e.stopPropagation());
 
-const count = 10;
-const card = [];
-
-// Обьект с типом карт
-const cardTypes  = [ 
-    {name: "CardOne", type: 1, adress: `<img src="./image/corner.png" alt="">`},
-    {name: "CardTwo", type: 2, adress: `<img src="./image/impasse.png" alt="">`},
-    {name: "CardThree", type: 3, adress: `<img src="./image/stick.png" alt="">`},
-];
-
-// массив со случайным набором чисел
-const arrCard = [];
-const quantityCard = 30;
-for (let i = 0; i < quantityCard; i++) {
-    arrCard.push(cardTypes[Math.floor(Math.random() * Math.floor(3))]);
-}
-
-// Отрисовка игрового поля
-let fieldsNumb = 8;
-const arr = [];
-const doubleMas = (item) => {
-    for (let i = 0; i < fieldsNumb; i++) {
-        arr[i] = [];
-        for (let j = 0; j < fieldsNumb; j++) {
-            arr[i][j] = null;
-        }
-    }
-}
-doubleMas();
-
-const createBlock = () => {
-    arr.forEach(i => {
-        i.forEach(x => {
-            gameBoard.innerHTML += `<div class='box'> </div>`  
-            });       
-    }); 
-};
-createBlock();
-
-// колличество оставшихся карт в колоде
-balanceCards.innerHTML = `Осталось ${arrCard.length} карт`
-
-// Отрисовка одной карты из всей колоды
-cardEl.innerHTML = arrCard[0].adress;
-
-// переменная для сохранения угла градуса картинки
-let angle = 0;
-// Клик по игровому полю
-const boxAll = document.querySelectorAll('.box');
-function clickBoardGame () {
-    if (this.textContent === ' '){
-        this.innerHTML = arrCard[0].adress;
-        arrCard.shift()
-    }else {
-        angle += 90;
-        this.style.transform = `rotate(${angle}deg)`
-    }
-    balanceCards.innerHTML = `Осталось ${arrCard.length} карт`
-    cardEl.innerHTML = arrCard[0].adress;
+//Menu make it as accordion for smaller screens
+if ($(window).width() < 992) {
+  $('.dropdown-menu a').click(function(e) {
+    e.preventDefault();
+      if($(this).next('.submenu').length) $(this).next('.submenu').toggle();
+  });
 };
 
-const addListeners = () => {
-    boxAll.forEach((elem) => elem.addEventListener('click', clickBoardGame) 
-)};
-addListeners();
+// Time to scroll the carousel
+$('#recipeCarousel').carousel({interval: 100000});
+
+// Advances one slide at a time
+$('.carousel .carousel-item').each(function() {
+    const minPerSlide = 4;
+    let next = $(this).next();
+    if (!next.length) next = $(this).siblings(':first');
+    
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (let i = 0; i < minPerSlide; i++) {
+        next = next.next();
+        if (!next.length) next = $(this).siblings(':first');
+        
+        next.children(':first-child').clone().appendTo($(this));
+    };
+});
+
+
+  
